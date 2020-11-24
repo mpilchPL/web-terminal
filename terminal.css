@@ -25,12 +25,14 @@ body {
 	width: 50vw;
 	height: 50vh;
 	font-size: 16.79px;
-	background-color: #111111;
+	background-color: #0000009c;
+	border: 3px ridge rgb(146, 146, 146);;	
 }
 #terminalTopBar {
 	width: 100%;
 	height: 10%;
 	background-color: rgb(146, 146, 146);
+	border-bottom: 3px ridge rgb(146, 146, 146);;
 }
 
 #terminal {
@@ -38,12 +40,14 @@ body {
 	height: auto;
 	max-height: 80%;
 	padding-left: 6px;
+	
 }
 
 #terminal2 {
 	width: auto;
 	height: auto;
 	padding-left: 6px;
+	
 }
 #term {
 	height: auto;
@@ -54,7 +58,7 @@ textarea {
 	outline: none;
 	border: none;
 	resize: none;
-	background-color: #111111;
+	background-color: #11111100;
 	color: white;
 	overflow: hidden;
 	caret-color: rgb(197, 0, 0);

@@ -3,13 +3,15 @@
 // script from: https://css-tricks.com/snippets/css/typewriter-effect/
 // author: Geoff Graham
 
+
+
 // set up text to print, each item in array is new line
 var aText = new Array(
     "There are only 10 types of people in the world:", 
     "Those who understand binary, and those who don't"
 );
 
-
+var pause = 200; // pause time after each line
 var iSpeed = 10; // time delay of print out
 var iIndex = 0; // start printing array at this posision
 var iArrLength = aText[0].length; // the length of the text array
@@ -32,13 +34,13 @@ function typewriter() {
         iTextPos = 0;
         iIndex++;
         destination.html( destination.html() + '\n'); // GO TO NEW LINE AFTER FINISHING EACH ELEMENT
-        terminal.scrollDown();
+        terminal.scrollDown();                        // SCROLL DOWN IF POSSIBLE
         if ( iIndex != aText.length ) {       
-            iArrLength = aText[iIndex].length;
-            setTimeout("typewriter()", 100);
+            iArrLength = aText[iIndex].length;        // SET LENGTH OF NEW LINE
+            setTimeout("typewriter()", pause);           // LITTLE PAUSE AFTER EACH LINE IS FINISHED
         }
     } else {
-        setTimeout("typewriter()", iSpeed);
+        setTimeout("typewriter()", iSpeed);             // PROCEED TO NEXT ITERATION AFTER DELAY
     }
 }
 

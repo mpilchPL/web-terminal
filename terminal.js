@@ -1,3 +1,5 @@
+//import {handleCommand} from './commandHandler.js';
+
 const o = $('#term');      // HANDLER OF OUTPUT TEXTAREA
 const i = $('#term2');      // HANDLER OF INPUT TEXTAREA
 const maxRows = 13;         // MAX NUMBER OF DISPLAYED ROWS
@@ -25,57 +27,38 @@ terminal.output.click(function (e) {  // FOCUS INPUT AREA WHEN CLICKED ON OUTPUT
 });
 
 $('#terminal2').keydown(function (e) { 
-    if (e.which == 38) { 
+    if (e.which == 38) {                // UP KEY
         terminal.scrollUp();
     }
-    if (e.which == 40) { 
+    if (e.which == 40) {                // DOWN KEY
         terminal.scrollDown();
     }
 
-    // ACTION TRIGGERED WHENEVER USER PRESSESS ENTER / RETURN KEY
-    if (e.which == keyCode) {         //########## 13 - return / enter
+    /* #region ACTION TRIGGERED WHENEVER USER PRESSESS ENTER */
+    if (e.which == keyCode) {         
         e.preventDefault();         // DISABLE DEFAULT BEHAVIOUR OF TEXTAREA WHEN PRESSED ENTER
 
         var rows = terminal.output.attr('rows');
         if (rows < maxRows) {                // PREVENT OUTPUT WINDOW TO BE HIGHER THAN MAX ROWS
             terminal.output.attr('rows', ++rows); // EXPAND OUTPUT AREA IF POSSIBLE
         }
-
+    
         terminal.println(commandPrompt + terminal.input.val());
         var line = terminal.input.val(); // LINE THAT HAS BEEN SENT 
-        terminal.input.val("");                    // CLEAR INPUT CONTENT
         var currentCommand = line.split(" ")[0];
         var parameter = '';
-        if (line.split(" ").length > 1) {
+
+        if (line.split(" ").length > 1) {           // CHECK FOR PARAMETER
             if (line.split(" ")[1].startsWith('-'))
                 parameter = line.split(" ")[1].substr(1);
         }
 
-        switch (currentCommand) {
-            case 'henlo':
-                terminal.println('henlooo');
-                break
-            case 'clear':
-                terminal.clear();
-                break;
-            case 'typewrite':
-                // if(parameter.length > 0) {
-                //     terminal.typewrite(new Array(parameter));
-                // } else {
-                //     terminal.println('No valid parameter');
-                // }
-                if (line.split(" ").length > 1) {
-                   terminal.typewrite((line.substr('typewrite'.length+1)).split("\n"));
-                    
-                }
-                break;
-            default:
-                terminal.println(parameter);
-                break;
-        }
+        handleCommand(terminal, currentCommand, line, parameter);
 
-        terminal.output.scrollTop(123123123);    // SCROLL OUTPUT WINDOW TO THE BOTTOM (MUST BE HIGH NUMBER)
+        terminal.input.val("");                    // CLEAR INPUT CONTENT
+        terminal.scrollDown();    // SCROLL OUTPUT WINDOW DOWN
     }
+    /* #endregion */
 });
 
 
@@ -115,3 +98,4 @@ Terminal.prototype.scrollDown = function() {
     var lineLenght = this.input.height();
     this.output.scrollTop(this.output.scrollTop() + lineLenght)
 }
+
