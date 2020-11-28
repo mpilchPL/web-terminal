@@ -95,6 +95,9 @@ Terminal.prototype.typewrite = function(value, speed = 'normal') {
     typewriter(); 
 }
 
+Terminal.prototype.goto = function(target, speed) {
+    $.scrollTo($('#' + target), speed);
+}
 
 Terminal.prototype.scrollUp = function() {
     var lineLenght = this.input.height();
