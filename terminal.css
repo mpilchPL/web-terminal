@@ -33,6 +33,7 @@ body {
 	height: 10%;
 	background-color: rgb(146, 146, 146);
 	border-bottom: 3px ridge rgb(146, 146, 146);;
+	display: flex;
 }
 
 #terminal {
