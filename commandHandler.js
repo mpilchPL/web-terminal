@@ -7,8 +7,6 @@ const ABOUT_ME = [
 ];
 
 
-
-
 function handleCommand(terminal, command, line, param) {
     if(findByName(command.toLowerCase()) < 0) {             //COMMAND DOESNT EXIST
         // here feedback info if needed

@@ -1,7 +1,8 @@
 //import {handleCommand} from './commandHandler.js';
 
-const o = $('#term');      // HANDLER OF OUTPUT TEXTAREA
-const i = $('#term2');      // HANDLER OF INPUT TEXTAREA
+const o = $('#term_outputTA');      // HANDLER OF OUTPUT TEXTAREA
+const i = $('#term_inputTA');      // HANDLER OF INPUT TEXTAREA
+const t = $('#term_terminal');          // HANDLER OF TERMINAL (CONATINER)
 const maxRows = 12;         // MAX NUMBER OF DISPLAYED ROWS
 const keyCode = 13;
 const commandPrompt = ">> ";
@@ -26,7 +27,7 @@ terminal.output.click(function (e) {  // FOCUS INPUT AREA WHEN CLICKED ON OUTPUT
     terminal.input.focus();
 });
 
-$('#terminal2').keydown(function (e) { 
+$('#term_input').keydown(function (e) { 
     /* #region ################# ARROW KEYS ################# */
     // used to scroll through terminal
     if (e.which == 38) {                // UP KEY
@@ -65,9 +66,9 @@ function adjustFontSize() {
     // the height of row strictly depends on font size and since output window 
     // is always 'maxRows' high - font size needs to be adjusted to height of output,
     // so the output window always contained exactly 'maxRows' rows
-    var newFontSize = Math.floor($('.container').height() * 0.9 / ((maxRows+1)*1.2));
-    $('.container').css('font-size', newFontSize);
- }
+    var newFontSize = Math.floor(t.height() * 0.9 / ((maxRows+1)*1.2));
+    t.css('font-size', newFontSize);
+}
 
 function Terminal(output, input) { 
     this.output = output;
@@ -113,4 +114,26 @@ Terminal.prototype.scrollDown = function(bottom = false) {  //scrolls terminal o
     }
     
 }
+/* #endregion ########################################### */
+
+
+/* #region ################# MOBILE DEVICES SETTINGS ################# */
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    $(document).ready(function () {
+        $('.term_androidArrows').removeClass('term_hidden');
+    });
+    
+    $('.arrowTop').click(function (e) { 
+        e.preventDefault();
+        terminal.scrollUp();
+    });
+    
+    $('.arrowBottom').click(function (e) { 
+        e.preventDefault();
+        terminal.scrollDown();
+    });
+}
+
+
 /* #endregion ########################################### */

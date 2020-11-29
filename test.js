@@ -1,6 +1,4 @@
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    alert();
-   }
+
 
 
 $('#rowH').html(i.height() + " container: " + $('.container').height());
@@ -19,3 +17,38 @@ $('#trigger').click(function (e) {
 });
 
 
+// TODO simplify this
+$('#term_optionsButton').click(function (e) { 
+    hideAllDropdowns();
+    $('#term_optionsMenu').toggleClass('term_hidden');
+});
+
+$('#term_helpButton').click(function (e) { 
+    hideAllDropdowns();
+    $('#term_helpMenu').toggleClass('term_hidden');
+});
+
+$('#term_fileButton').click(function (e) { 
+    hideAllDropdowns();
+    $('#term_fileMenu').toggleClass('term_hidden');
+});
+
+function hideAllDropdowns() { 
+    $('#term_optionsMenu').addClass('term_hidden');
+    $('#term_helpMenu').addClass('term_hidden');
+    $('#term_fileMenu').addClass('term_hidden');
+ }
+
+ $('#clearBTN').click(function (e) { 
+     e.preventDefault();
+     terminal.clear();
+ });
+
+$(window).click(function (e) { 
+     if(!e.target.closest(".term_dropdown")) {
+        hideAllDropdowns();
+     }
+     if(e.target.closest(".term_dropdownMenu_item")) {
+        hideAllDropdowns();
+     }
+});

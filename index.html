@@ -5,24 +5,54 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Test Site</title>
-	
-		<link type="text/css" rel="stylesheet" href="terminal.css"></link>
+		
+		<link rel="stylesheet" href="main.css">
+		<link rel="stylesheet" href="terminal.css"></link>
 	</head>
 	
 	<body>
-		<div class="container center-horizontal center-vertical">
-			<div id="terminalTopBar">
-				<div>a</div>
-				<div>b</div>
+		<div id="term_terminal" class="center-horizontal center-vertical">
+			<div id="term_topBar">
+				<div class="term_dropdown term_buttonHover">
+					<div id="term_fileButton" class="term_menuItem">File</div>
+					<div id="term_fileMenu" class="term_dropdownMenu term_hidden">
+						<div id="clearBTN" class="term_dropdownMenu_item">Clear</div>
+						<div class="term_dropdownMenu_item">Link 1</div>
+						<div class="term_dropdownMenu_item">Link 1</div>
+					</div>
+				</div>
+				<div class="term_dropdown term_buttonHover">
+					<div id="term_optionsButton" class="term_menuItem">Options</div>
+					<div id="term_optionsMenu" class="term_dropdownMenu term_hidden">
+						<div class="term_dropdownMenu_item">Link 1</div>
+						<div class="term_dropdownMenu_item">Link 1</div>
+						<div class="term_dropdownMenu_item">Link 1</div>
+					</div>
+				</div>
+				
+				<div class="term_dropdown term_buttonHover">
+					<div id="term_helpButton" class="term_menuItem">Help</div>
+					<div id="term_helpMenu" class="term_dropdownMenu term_hidden">
+						<div class="term_dropdownMenu_item">Link 1</div>
+						<div class="term_dropdownMenu_item">Link 1</div>
+						<div class="term_dropdownMenu_item">Link 1</div>
+					</div>
+				</div>
+				
+				
+				<div class="term_buttonsLeftBorder"></div>
+				<div id="term_max" class="term_button">&#x2750;</div>
+				<div id="term_exit" class="term_button">&#x2716;</div>
 			</div>
-			<div id="terminal" class="">
-				<textarea name="term" id="term" readonly cols="30" rows="13" spellcheck="false" autocomplete="off"></textarea>
+			<div id="term_output" class="">
+				<textarea name="term_outputTA" id="term_outputTA" readonly cols="30" rows="13" spellcheck="false" autocomplete="off"></textarea>
 			</div>
-			<div id="terminal2">
-				<textarea name="term2" id="term2" cols="" rows="1" spellcheck="false" autocomplete="off"></textarea>
+			<div id="term_input">
+				<textarea name="term_inputTA" id="term_inputTA" cols="" rows="1" spellcheck="false" autocomplete="off"></textarea>
 			</div>
 
-			
+			<div class="term_androidArrows term_arrowTop term_hidden">&uarr;</div>
+			<div class="term_androidArrows term_arrowBottom term_hidden">&darr;</div>
 		</div>
 
 		<div id="labels">
@@ -41,7 +71,6 @@
 		<script src="test.js"></script>
 		<script src="commandHandler.js"></script>
 		<script src="jquery.scrollTo.min.js"></script>
-		<script src="scrollTo.js"></script>
 	</body>
 	
 </html>
